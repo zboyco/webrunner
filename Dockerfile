@@ -1,12 +1,13 @@
 FROM nginx:alpine-slim
 
 # Import environment variables
-ARG PROJECT_VERSION
-ARG ENV
-ARG APP_CONFIG
+ENV PROJECT_VERSION=v0.0.0
+ENV ENV=prod
+ENV APP_CONFIG=""
 
 # Copy nginx config
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
-
+COPY web.conf.template /etc/nginx/conf.d/web.conf.template
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
 # execute entrypoint
-ENTRYPOINT ["./entrypoin.sh"]
+CMD ["/entrypoint.sh"]

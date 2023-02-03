@@ -1,13 +1,19 @@
-gzip on;
-gzip_types text/css application/javascript;
-
 server {
     listen 80;
     listen  [::]:80;
     server_name  localhost;
     root /usr/share/nginx/html;
 
-    location /__built__/ {
+    #开启gzip
+    gzip on;  
+    #低于1kb的资源不压缩 
+    gzip_min_length 1k;
+    #压缩级别1-9，越大压缩率越高，同时消耗cpu资源也越多，建议设置在5左右。 
+    gzip_comp_level 6; 
+    #需要压缩哪些响应类型的资源，多个空格隔开。不建议压缩图片.
+    gzip_types text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
+
+    location /static/ {
         expires 30d;
         root /usr/share/nginx/html;
     }
