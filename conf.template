@@ -2,7 +2,7 @@ server {
     listen 80;
     listen  [::]:80;
     server_name  localhost;
-    root /usr/share/nginx/html;
+    root /app;
 
     #开启gzip
     gzip on;  
@@ -15,7 +15,7 @@ server {
 
     location /(static|__built__)/ {
         expires 30d;
-        root /usr/share/nginx/html;
+        root /app;
     }
 
     location / {
