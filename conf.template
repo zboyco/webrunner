@@ -13,7 +13,7 @@ server {
     #需要压缩哪些响应类型的资源，多个空格隔开。不建议压缩图片.
     gzip_types text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
 
-    location /static/ {
+    location /(static|__built__)/ {
         expires 30d;
         root /usr/share/nginx/html;
     }
@@ -28,7 +28,7 @@ server {
 
         sub_filter '__PROJECT_VERSION__' '$PROJECT_VERSION';
         sub_filter '__ENV__' '$ENV';
-        sub_filter '__APP_CONFIG__' '$APP_CONFIG';
+        sub_filter '__APP_CONFIG__' '$app_config';
         sub_filter_once on;
     }
 }
