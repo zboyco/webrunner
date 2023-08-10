@@ -13,9 +13,12 @@ server {
     #需要压缩哪些响应类型的资源，多个空格隔开。不建议压缩图片.
     gzip_types text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
 
-    location /(static|__built__)/ {
-        expires 30d;
+    location ~ ^/(static|__built__)/ {
         root /app;
+        expires max;
+        proxy_cache static_memory_cache;  # 使用内存缓存
+        proxy_cache_valid 200 1d;
+        proxy_cache_lock on;
     }
 
     location / {
