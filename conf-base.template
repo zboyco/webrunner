@@ -32,6 +32,10 @@ server {
         sub_filter '__PROJECT_VERSION__' '$PROJECT_VERSION';
         sub_filter '__ENV__' '$ENV';
         sub_filter '__APP_CONFIG__' '$app_config';
+
+        # 需要将以下字符串替换为注入的扩展环境变量
+__EXTENT_CONFIG__
+
         sub_filter_once on;
     }
 }
