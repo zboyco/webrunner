@@ -39,7 +39,7 @@ done
 # Install envsubst
 echo "Installing envsubst"
 # 将扩展变量替换到 conf.template 中
-sed "s/__EXTENT_CONFIG__/${ext_config}/g" /etc/nginx/conf.d/conf-base.template > /etc/nginx/conf.d/conf.template 
+sed "s@__EXTENT_CONFIG__@${ext_config}@g" /etc/nginx/conf.d/conf-base.template > /etc/nginx/conf.d/conf.template 
 
 envsubst '${PROJECT_VERSION} ${ENV} ${app_config}' < /etc/nginx/conf.d/conf.template > /etc/nginx/conf.d/default.conf
 
