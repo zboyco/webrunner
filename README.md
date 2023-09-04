@@ -33,3 +33,4 @@ be used to replace `__APP_CONFIG__` in `index.html`
 
 * format: `key1=value1,key2=value2`
 * `APP_CONFIG__*` will join to `APP_CONFIG`
+* all `APP_CONFIG` will be sub_filter, like `value1` instead of `__key1__`
