@@ -14,6 +14,9 @@ app/
     static/
         xxx.js
         xxx.css
+    assets/
+        xxx.js
+        xxx.css
     sw.js
     favicon.ico
     index.html
